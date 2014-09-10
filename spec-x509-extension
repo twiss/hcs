@@ -1,0 +1,47 @@
+This is a draft of the specification.
+
+
+HTTPS Content Signatures
+
+The HTTPS Content Signatures extension provides a means of specifying
+the HTTPS Response Bodies a server is supposed to return for given
+paths. Together with Certificate Transparency, the use of this extension
+makes it possible for users of a website to be notified of changes to
+security-critical parts of the website, even if those changes are only
+served to a small number of users.
+
+This extension consists of a set of (path, hash) pairs. The path of each
+pair may be either an absolute path, such as "/index.js?arg=1%3F", in
+which case it applies to all websites using the certificate, or a fully
+qualified URL, such as "https://example.com/index.js?arg=1%3F". The hash
+of each pair is an algorithm identifier string, such as "sha256",
+concatenated with a dash "-", concatenated with a lowercase hexadecimal
+digest of the expected content located at the path. The only valid
+algorithm is currently sha256.
+
+A user agent supporting this extension MUST NOT process any response to
+a request to a path included in this extension and MUST show a un-
+circumventable security error instead if any of the following happen:
+
+(1) The hash does not match the response the user agent received.
+
+(2) The user agent thinks the algorithm specified is not valid as
+defined above.
+
+(3) The user agent receives a response code other than 200 or 302.
+
+The user agent MAY allow responses with response code 302 if the
+resource the user agent is redirected to matches the hash. Otherwise, it
+MUST block 302 responses as described above. In any case, a user agent
+MUST block responses following 302 redirection if the response does not
+match the hash for the original path (and also if it doesn't match the
+hash for the new path).
+
+This extension MAY be marked critical.
+
+id-ce-httpsContentSignatures OBJECT IDENTIFIER ::=  { id-ce 66 }
+
+HttpsContentSignatures ::= SET {
+  hashes SEQUENCE {
+    path UTF8String,
+    hash UTF8String } }
