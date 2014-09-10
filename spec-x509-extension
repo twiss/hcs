@@ -12,12 +12,12 @@ served to a small number of users.
 
 This extension consists of a set of (path, hash) pairs. The path of each
 pair may be either an absolute path, such as "/index.js?arg=1%3F", in
-which case it applies to all websites using the certificate, or a fully
-qualified URL, such as "https://example.com/index.js?arg=1%3F". The hash
-of each pair is an algorithm identifier string, such as "sha256",
-concatenated with a dash "-", concatenated with a lowercase hexadecimal
-digest of the expected content located at the path. The only valid
-algorithm is currently sha256.
+which case it applies to all domain names using the certificate, or a
+fully qualified URL, such as "https://example.com/index.js?arg=1%3F".
+The hash of each pair is an algorithm identifier string, such as
+"sha256", concatenated with a dash "-", concatenated with a lowercase
+hexadecimal digest of the expected content located at the path. The only
+valid algorithm is currently sha256.
 
 A user agent supporting this extension MUST NOT process any response to
 a request to a path included in this extension and MUST show a un-
