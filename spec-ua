@@ -13,11 +13,8 @@ defined in [1].
 
 (3) The user agent receives a response code other than 200 or 302.
 
-The user agent MAY allow responses with response code 302 if the
-resource the user agent is redirected to matches the hash. Otherwise, it
-MUST block 302 responses as described above. In any case, a user agent
-MUST block responses following 302 redirection if the response does not
-match the hash for the original path (and also if it doesn't match the
-hash for the new path).
+(4) The user agent receives a response code of 302, and the hash of the
+new location is not specified in this extension or it is not the same as
+the hash of the old location.
 
 [1] ./spec-x509-extension
