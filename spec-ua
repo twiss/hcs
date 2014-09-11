@@ -1,0 +1,23 @@
+This is a draft of the specification.
+
+
+A user agent supporting the HTTPS Content Signatures[1] extension MUST
+NOT process any response to a request to a path included in this
+extension and MUST show a un-circumventable security error instead if
+any of the following happen:
+
+(1) The hash does not match the response the user agent received.
+
+(2) The user agent thinks the algorithm specified is not valid as
+defined in [1].
+
+(3) The user agent receives a response code other than 200 or 302.
+
+The user agent MAY allow responses with response code 302 if the
+resource the user agent is redirected to matches the hash. Otherwise, it
+MUST block 302 responses as described above. In any case, a user agent
+MUST block responses following 302 redirection if the response does not
+match the hash for the original path (and also if it doesn't match the
+hash for the new path).
+
+[1] ./spec-x509-extension
