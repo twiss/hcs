@@ -39,4 +39,4 @@ hash_1 = SEQUENCE:hash_seq_sect_1
 
 [hash_seq_sect_1]
 path = UTF8:/
-hash = UTF8:sha256-12a065f291a5753f8ebddc7293dbcc3e3414e447e9f184dcc78f3e2aeb0a8398
+hash = UTF8:sha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO

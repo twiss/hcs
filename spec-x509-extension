@@ -10,15 +10,12 @@ makes it possible for users of a website to be notified of changes to
 security-critical parts of the website, even if those changes are only
 served to a small number of users.
 
-This extension consists of a set of (path, hash) pairs. The path of each
-pair may be either an absolute path, such as "/index.js?arg=1%3F", in
-which case it applies to all domain names using the certificate, or a
+This extension consists of a set of (path, hash) pairs.  The path of
+each pair may be either an absolute path, such as "/index.js?arg=1%3F",
+in which case it applies to all domain names using the certificate, or a
 fully qualified URL, such as "https://example.com/index.js?arg=1%3F".
-The hash of each pair is an algorithm identifier string, such as
-"sha256", concatenated with a dash "-", concatenated with a lowercase
-hexadecimal digest of the expected content located at the path. The only
-valid algorithm is currently sha256. There may be multiple hashes for
-the same path, in which case at least one of them must match.
+The hash of each pair is in the same format as defined in the
+Subresource Integrity specification [SRI].
 
 A user agent supporting this extension MUST NOT process any response to
 a request to a path included in this extension and MUST show a un-
@@ -32,7 +29,7 @@ specified is not valid as defined above.
 error status code (4xx or 5xx).
 
 (3) The user agent receives an error status code (4xx or 5xx) and the
-request is a navigation request as defined in [Fetch] (e.g., an HTML 404
+request is a navigation request as defined in [FETCH] (e.g., an HTML 404
 document) and the response body does not match the specified hash.
 
 (4) The user agent receives a status code of 302, and the response body
@@ -55,4 +52,5 @@ HttpsContentSignatures ::= SET {
     hash UTF8String } }
 
 
-[Fetch]: https://fetch.spec.whatwg.org/
+[SRI]: https://www.w3.org/TR/SRI/
+[FETCH]: https://fetch.spec.whatwg.org/
