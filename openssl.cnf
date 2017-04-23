@@ -1,0 +1,42 @@
+oid_section = new_oids
+
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+attributes = req_attributes
+
+[req_distinguished_name]
+countryName = Country Name (2 letter code)
+countryName_default = US
+stateOrProvinceName = State or Province Name (full name)
+stateOrProvinceName_default = MN
+localityName = Locality Name (eg, city)
+localityName_default = Minneapolis
+0.organizationName		= Organization Name (eg, company)
+0.organizationName_default	= Internet Widgits Pty Ltd
+organizationalUnitName	= Organizational Unit Name (eg, section)
+organizationalUnitName_default	= 
+commonName = Common Name (e.g. server FQDN or YOUR name)
+commonName_default = 
+commonName_max	= 64
+
+[req_attributes]
+challengePassword		= A challenge password
+challengePassword_min		= 4
+challengePassword_max		= 20
+
+unstructuredName		= An optional company name
+
+[new_oids]
+HttpsContentSignatures = 2.5.29.66
+
+[v3_req]
+basicConstraints = CA:FALSE
+HttpsContentSignatures = ASN1:SET:hashes_set_sect
+
+[hashes_set_sect]
+hash_1 = SEQUENCE:hash_seq_sect_1
+
+[hash_seq_sect_1]
+path = UTF8:/
+hash = UTF8:sha256-12a065f291a5753f8ebddc7293dbcc3e3414e447e9f184dcc78f3e2aeb0a8398
