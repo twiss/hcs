@@ -21,20 +21,20 @@ A user agent supporting this extension MUST NOT process any response to
 a request to a path included in this extension and MUST show a un-
 circumventable security error instead if any of the following happen:
 
-(1) The user agent receives a 200 status code, and the response body
+(1) The user agent receives a status code of 200, and the response body
 does not match the specified hash or the user agent thinks the algorithm
 specified is not valid as defined above.
 
-(2) The user agent receives a status code other than 200, 302, or an
-error status code (4xx or 5xx).
+(2) The user agent receives a status code of 302, and the response body
+for the new location does not match the hash specified for the old
+location.
 
 (3) The user agent receives an error status code (4xx or 5xx) and the
 request is a navigation request as defined in [FETCH] (e.g., an HTML 404
 document) and the response body does not match the specified hash.
 
-(4) The user agent receives a status code of 302, and the response body
-for the new location does not match the hash specified for the old
-location.
+(4) The user agent receives a status code other than 200, 302, or an
+error status code (4xx or 5xx).
 
 Note that 4xx or 5xx responses to non-navigation requests, such as
 scripts, are allowed to have any body (including a body that doesn't
