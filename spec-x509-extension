@@ -34,7 +34,8 @@ defined above.
 new location is not specified in this extension or it is not the same as
 the hash of the old location.
 
-This extension MAY be marked critical.
+In order to maintain backwards compatibility, this extension SHOULD NOT
+be marked critical.
 
 id-ce-httpsContentSignatures OBJECT IDENTIFIER ::=  { id-ce 66 }
 
