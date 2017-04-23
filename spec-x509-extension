@@ -17,7 +17,8 @@ fully qualified URL, such as "https://example.com/index.js?arg=1%3F".
 The hash of each pair is an algorithm identifier string, such as
 "sha256", concatenated with a dash "-", concatenated with a lowercase
 hexadecimal digest of the expected content located at the path. The only
-valid algorithm is currently sha256.
+valid algorithm is currently sha256. There may be multiple hashes for
+the same path, in which case at least one of them must match.
 
 A user agent supporting this extension MUST NOT process any response to
 a request to a path included in this extension and MUST show a un-
