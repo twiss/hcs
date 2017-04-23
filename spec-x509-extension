@@ -30,9 +30,8 @@ defined above.
 
 (3) The user agent receives a response code other than 200 or 302.
 
-(4) The user agent receives a response code of 302, and the hash of the
-new location is not specified in this extension or it is not the same as
-the hash of the old location.
+(4) The user agent receives a response code of 302, and the response for
+the new location does not match the hash specified for the old location.
 
 In order to maintain backwards compatibility, this extension SHOULD NOT
 be marked critical.
