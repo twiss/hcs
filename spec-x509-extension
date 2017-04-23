@@ -19,6 +19,21 @@ The hash of each pair is an algorithm identifier string, such as
 hexadecimal digest of the expected content located at the path. The only
 valid algorithm is currently sha256.
 
+A user agent supporting this extension MUST NOT process any response to
+a request to a path included in this extension and MUST show a un-
+circumventable security error instead if any of the following happen:
+
+(1) The hash does not match the response the user agent received.
+
+(2) The user agent thinks the algorithm specified is not valid as
+defined above.
+
+(3) The user agent receives a response code other than 200 or 302.
+
+(4) The user agent receives a response code of 302, and the hash of the
+new location is not specified in this extension or it is not the same as
+the hash of the old location.
+
 This extension MAY be marked critical.
 
 id-ce-httpsContentSignatures OBJECT IDENTIFIER ::=  { id-ce 66 }
