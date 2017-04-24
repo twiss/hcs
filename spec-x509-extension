@@ -22,8 +22,7 @@ a request to a path included in this extension and MUST show a un-
 circumventable security error instead if any of the following happen:
 
 (1) The user agent receives a status code of 200, and the response body
-does not match the specified hash or the user agent thinks the algorithm
-specified is not valid as defined above.
+does not match the specified hash.
 
 (2) The user agent receives a status code of 302, and the response body
 for the new location does not match the hash specified for the old
