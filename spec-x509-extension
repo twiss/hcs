@@ -19,26 +19,25 @@ Subresource Integrity specification [SRI].
 
 A user agent supporting this extension MUST NOT process any response to
 a request to a path included in this extension and MUST show a un-
-circumventable security error instead if any of the following happen:
+circumventable security error instead if either of the following happen:
 
-(1) The user agent receives a status code of 200, and the response body
-does not match the specified hash.
+(1) The user agent receives an ok status code (2xx), and the response
+    body does not match the specified hash.
 
-(2) The user agent receives a status code of 302, and the response body
-for the new location does not match the hash specified for the old
-location.
+    Note that after a redirect, including e.g. a cached 301 redirect,
+    the response body at the new location must still match the hash
+    specified for the old location.
 
-(3) The user agent receives an error status code (4xx or 5xx) and the
-request is a navigation request as defined in [FETCH] (e.g., an HTML 404
-document) and the response body does not match the specified hash.
+(2) The user agent receives an error status code (4xx or 5xx) and the
+    request is a navigation request as defined in [FETCH] (e.g., an HTML
+    404 document) and the response body does not match the specified
+    hashes.
 
-(4) The user agent receives a status code other than 200, 302, or an
-error status code (4xx or 5xx).
-
-Note that 4xx or 5xx responses to non-navigation requests, such as
-scripts, are allowed to have any body (including a body that doesn't
-match any hash) in the understanding that the user agent will not
-process the response body in any way regardless of this specification.
+    Note that 4xx or 5xx responses to non-navigation requests, such as
+    scripts, are allowed to have any body (including a body that doesn't
+    match any hash) in the understanding that the user agent will not
+    process the response body in any way regardless of this
+    specification.
 
 In order to maintain backwards compatibility, this extension SHOULD NOT
 be marked critical.

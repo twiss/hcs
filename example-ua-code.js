@@ -7,11 +7,7 @@ function onResponseBody(request, response) {
 		return; // let response through
 	}
 	for (let pair of pairs) {
-		if(pair.path === request.url || pair.path === request.path) {
-			if (response.status !== 200 && response.status !== 302 && response.status < 400) {
-				request.abort();
-				// show security error in browsing context
-			}
+		if (pair.path === request.url || pair.path === request.path) {
 			if (!match(pair.hash, response.body)) { // Defined by Subresource Integrity (https://www.w3.org/TR/SRI/)
 				request.abort();
 				// show security error in browsing context
@@ -22,6 +18,8 @@ function onResponseBody(request, response) {
 	return; // let response through
 }
 
-// Note: the order of pairs is not defined, so the user agent may
+// Note 1: the above code does not explicitly handle redirects.
+
+// Note 2: the order of pairs is not defined, so the user agent may
 // optimize the above code to, for example, a pair of hash table
 // lookups.
