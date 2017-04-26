@@ -1,0 +1,14 @@
+HCS is meant to prevent, or detect, the following attacks against users
+of a web application:
+
+1. The server owner goes rogue and serves malicious code from the server
+   (the ability to detect this is, of course, dependent on the ability
+   to identify malicious code).
+
+2. The server gets hacked and serves malicious code.
+
+3. The reverse-proxy CDN, if any, gets hacked or goes rogue and serves
+   malicious code.
+
+4. Any of the above, but the server or CDN serves malicious code to *a
+   single user* (who may or may not be paying attention).
